@@ -1,26 +1,28 @@
 function createTable() {
-    //Write your code here
-  const rowsInput = prompt('Input number of rows');
-  const colsInput = prompt('Input number of columns');
+  const table = document.getElementById("myTable");
 
-  const rows = Number(rowsInput);
-  const cols = Number(colsInput);
+  // Clear existing table content
+  table.innerHTML = '';
 
-  if (
-    isNaN(rows) || isNaN(cols) ||
-    !Number.isInteger(rows) || !Number.isInteger(cols) ||
-    rows <= 0 || cols <= 0
-  ) {
-    alert('Invalid input! Please enter positive integer values for rows and columns.');
+  const rows = parseInt(prompt("Input number of rows"));
+  const cols = parseInt(prompt("Input number of columns"));
+
+  // Validate input
+  if (isNaN(rows) || isNaN(cols) || rows <= 0 || cols <= 0) {
+    alert("Please enter valid positive numbers.");
     return;
   }
 
+  // Create table using DOM
   for (let i = 0; i < rows; i++) {
-    const tr = document.createElement('tr');
+    const tr = document.createElement("tr");
+
     for (let j = 0; j < cols; j++) {
-      const td = document.createElement('td');
+      const td = document.createElement("td");
       td.textContent = `Row-${i} Column-${j}`;
       tr.appendChild(td);
     }
+
     table.appendChild(tr);
+  }
 }
